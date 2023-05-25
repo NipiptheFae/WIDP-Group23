@@ -12,7 +12,9 @@ def today():
     doc = BeautifulSoup(page, "html.parser")
     page_text1 = doc.find(class_="weather-list-box mx-3")
     nem1 = str(page_text1).split("Nem:")[1].split("</div>")[0]
-    temps1 = str(page_text1).split("düşük:")[1].split("</div>")[0]
+    temp = str(page_text1).split("düşük:")[1].split("</div>")[0].split()[0]
+    temps2 = str(page_text1).split("düşük:")[1].split("</div>")[0].split()[1]
+    temps1 = temp + temps2
     yagis1 = str(page_text1).split("İhtimali: ")[1].split("</div>")[0]
     rüzgar1 = str(page_text1).split("Rüzgar Hızı:")[1].split(" </div>")[0]
 
