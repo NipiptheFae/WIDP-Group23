@@ -16,11 +16,16 @@ def today():
     yagis1 = str(page_text1).split("İhtimali: ")[1].split("</div>")[0]
     rüzgar1 = str(page_text1).split("Rüzgar Hızı:")[1].split(" </div>")[0]
 
-    # Display the results in GUI labels
-    nem_label.config(text=nem1)
-    temps_label.config(text=temps1)
-    yagis_label.config(text=yagis1)
-    rüzgar_label.config(text=rüzgar1)
+    
+    weather_data = {
+        "Humidity": nem1,
+        "Temperature": temps1,
+        "Rain Possibility": yagis1,
+        "Wind Speed": rüzgar1
+    }
+
+
+    display_weather_data(weather_data)
 
 def secondDay():
     clicked_city = clicked.get()
@@ -33,11 +38,16 @@ def secondDay():
     yagis = str(page_text).split("Yağış İhtimali:</strong>")[1].split(" </div>")[0]
     rüzgar = str(page_text).split("Rüzgar Hızı:</strong>")[1].split(" </div>")[0]
 
-    # Display the results in GUI labels
-    nem_label.config(text=nem)
-    temps_label.config(text=temps)
-    yagis_label.config(text=yagis)
-    rüzgar_label.config(text=rüzgar)
+
+    weather_data = {
+        "Humidity": nem,
+        "Temperature": temps,
+        "Rain Possibility": yagis,
+        "Wind Speed": rüzgar
+    }
+
+
+    display_weather_data(weather_data)
 
 def thirdDay():
     clicked_city = clicked.get()
@@ -51,11 +61,24 @@ def thirdDay():
     yagis = str(day2).split("Yağış İhtimali:</strong>")[1].split(" </div>")[0]
     rüzgar = str(day2).split("Rüzgar Hızı:</strong>")[1].split(" </div>")[0]
 
-    # Display the results in GUI labels
-    nem_label.config(text=nem)
-    temps_label.config(text=temps)
-    yagis_label.config(text=yagis)
-    rüzgar_label.config(text=rüzgar)
+
+    weather_data = {
+        "Humidity": nem,
+        "Temperature": temps,
+        "Rain Possibility": yagis,
+        "Wind Speed": rüzgar
+    }
+
+
+    display_weather_data(weather_data)
+
+
+def display_weather_data(weather_data):
+
+    nem_label.config(text="Humidity: " + weather_data["Humidity"])
+    temps_label.config(text="Temperature: " + weather_data["Temperature"])
+    yagis_label.config(text="Rain Possibility: " + weather_data["Rain Possibility"])
+    rüzgar_label.config(text="Wind Speed: " + weather_data["Wind Speed"])
 
 
 ###################       GUI
@@ -63,10 +86,16 @@ def thirdDay():
 root = Tk()
 root.title("Weather Information Display Program")
 
-title = tk.Label(root, text='Welcome!')
+
+root.geometry("500x400")
+
+
+font_size = 14
+
+title = tk.Label(root, text='Welcome!', font=("Arial", font_size))
 title.pack()
 
-title2 = tk.Label(root, text='Please choose your city.')
+title2 = tk.Label(root, text='Please choose your city.', font=("Arial", font_size))
 title2.pack()
 
 clicked = StringVar()
@@ -77,18 +106,21 @@ drop = OptionMenu(root, clicked, "Ankara", "Istanbul", "Izmir", "Bursa", "Antaly
 drop.pack()
 
 ####        OPTION LIST
-myButton = Button(root,text="Today", command=today).pack()
-myButton2 = Button(root,text="Tomorrow", command=secondDay).pack()
-myButton3 = Button(root,text="2 Days Later", command=thirdDay).pack()
+myButton = Button(root, text="Today", command=today, font=("Arial", font_size))
+myButton.pack()
+myButton2 = Button(root, text="Tomorrow", command=secondDay, font=("Arial", font_size))
+myButton2.pack()
+myButton3 = Button(root, text="2 Days Later", command=thirdDay, font=("Arial", font_size))
+myButton3.pack()
 
-# Labels to display the results
-nem_label = Label(root)
+
+nem_label = Label(root, font=("Arial", font_size))
 nem_label.pack()
-temps_label = Label(root)
+temps_label = Label(root, font=("Arial", font_size))
 temps_label.pack()
-yagis_label = Label(root)
+yagis_label = Label(root, font=("Arial", font_size))
 yagis_label.pack()
-rüzgar_label = Label(root)
+rüzgar_label = Label(root, font=("Arial", font_size))
 rüzgar_label.pack()
 
 root.mainloop()
