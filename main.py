@@ -5,6 +5,21 @@ from tkinter import *
 import requests
 import re
 
+# def convertTemp(weather_data, isCelcius):
+#
+#     if isCelcius:
+#         weather_data["Temperature"] = str((int(weather_data["Temperature"]) * 9/5)+32)
+#         isCelcius = False
+#         display_weather_data(weather_data)
+#     else:
+#         weather_data["Temperature"] = str((int(weather_data["Temperature"]) -32)*5/9)
+#         isCelcius = True;
+#         display_weather_data()
+
+
+
+
+    # return
 def today():
     clicked_city = clicked.get()
     url = f"https://www.mynet.com/hava-durumu/{clicked_city}-haftalik-hava-durumu"
@@ -19,6 +34,8 @@ def today():
     yagis1 = str(page_text1).split("İhtimali: ")[1].split("</div>")[0]
     rüzgar1 = str(page_text1).split("Rüzgar Hızı:")[1].split(" </div>")[0]
 
+
+
     
     weather_data = {
         "Humidity": nem1,
@@ -29,6 +46,12 @@ def today():
 
 
     display_weather_data(weather_data)
+
+    ###CONVERT BUTTON FOR "TODAY"
+    IsCelcius = True
+
+    convertButton = Button(root, text="Convert Temperature",font=("Arial", font_size))
+    convertButton.pack()
 
 def secondDay():
     clicked_city = clicked.get()
@@ -44,6 +67,11 @@ def secondDay():
     rüzgar = str(page_text).split("Rüzgar Hızı:</strong>")[1].split(" </div>")[0]
 
 
+
+
+
+
+
     weather_data = {
         "Humidity": nem,
         "Temperature": temps,
@@ -53,6 +81,12 @@ def secondDay():
 
 
     display_weather_data(weather_data)
+
+    # CONVERT BUTTON FOR "SECOND DAY"
+    IsCelcius = True
+
+    convertButton = Button(root, text="Convert Temperature",font=("Arial", font_size))
+    convertButton.pack()
 
 def thirdDay():
     clicked_city = clicked.get()
@@ -69,6 +103,8 @@ def thirdDay():
     rüzgar = str(day2).split("Rüzgar Hızı:</strong>")[1].split(" </div>")[0]
 
 
+
+
     weather_data = {
         "Humidity": nem,
         "Temperature": temps,
@@ -78,6 +114,12 @@ def thirdDay():
 
 
     display_weather_data(weather_data)
+
+    # CONVERT BUTTON FOR THIRD DAY
+    IsCelcius = True
+
+    convertButton = Button(root, text="Convert Temperature", font=("Arial", font_size))
+    convertButton.pack()
 
 
 def display_weather_data(weather_data):
@@ -131,3 +173,9 @@ rüzgar_label = Label(root, font=("Arial", font_size))
 rüzgar_label.pack()
 
 root.mainloop()
+
+convertButton = Button(root, text="Convert Temperature",font=("Arial", font_size))
+
+
+
+
