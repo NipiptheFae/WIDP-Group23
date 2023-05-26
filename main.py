@@ -15,6 +15,7 @@ def today():
     temp = str(page_text1).split("düşük:")[1].split("</div>")[0].split()[0]
     temps2 = str(page_text1).split("düşük:")[1].split("</div>")[0].split()[1]
     temps1 = temp + temps2
+    temp3 = temps2.split("/")[1].split("°")[0]
     yagis1 = str(page_text1).split("İhtimali: ")[1].split("</div>")[0]
     rüzgar1 = str(page_text1).split("Rüzgar Hızı:")[1].split(" </div>")[0]
 
@@ -37,6 +38,8 @@ def secondDay():
     page_text = doc.find(class_="d-flex weather-list-item-container")
     nem = str(page_text).split("Nem:</strong>")[1].split("</div>")[0]
     temps = str(page_text).split("düşük:</strong>")[1].split("</div>")[0]
+    temp1 = temps.split("/")[0].split("°")[0]
+    temp2 = temps.split("/")[1].split("°")[0]
     yagis = str(page_text).split("Yağış İhtimali:</strong>")[1].split(" </div>")[0]
     rüzgar = str(page_text).split("Rüzgar Hızı:</strong>")[1].split(" </div>")[0]
 
@@ -60,6 +63,8 @@ def thirdDay():
     day2 = str(page_text).split("<strong>Hissedilen:</strong>")[2]
     nem = str(day2).split("Nem:</strong>")[1].split("</div>")[0]
     temps = str(day2).split("düşük:</strong>")[1].split("</div>")[0]
+    temp1 = temps.split("/")[0].split("°")[0]
+    temp2 = temps.split("/")[1].split("°")[0]
     yagis = str(day2).split("Yağış İhtimali:</strong>")[1].split(" </div>")[0]
     rüzgar = str(day2).split("Rüzgar Hızı:</strong>")[1].split(" </div>")[0]
 
