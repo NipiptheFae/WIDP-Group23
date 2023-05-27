@@ -113,13 +113,11 @@ def display_weather_data(weather_data):
 def toggle_unit():
     global temperature_unit
 
-    # Toggle temperature unit
     if temperature_unit == "Celsius":
         temperature_unit = "Fahrenheit"
     else:
         temperature_unit = "Celsius"
 
-    # Update temperature unit label
     unit_label.config(text="Temperature Unit: " + temperature_unit)
 
 
@@ -165,13 +163,11 @@ yagis_label = Label(root, font=("Arial", font_size))
 yagis_label.pack()
 rüzgar_label = Label(root, font=("Arial", font_size))
 rüzgar_label.pack()
-# Rest of the code...
 
-# Temperature unit label
 unit_label = Label(root, font=("Arial", font_size))
 unit_label.pack()
 
-# Toggle button
+
 toggle_button = Button(root, text="Toggle Temperature Unit", command=toggle_unit, font=("Arial", font_size))
 toggle_button.pack()
 
