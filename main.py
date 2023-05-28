@@ -89,11 +89,13 @@ def thirdDay():
 
 
 def display_weather_data(weather_data):
-    nem_label.config(text="Humidity: " + weather_data["Humidity"])
-    temps_morning_label.config(text="Temperature in the morning: " + weather_data["Temperature in the morning"])
-    temps_night_label.config(text="Temperature at night: " + weather_data["Temperature at night"])
-    yagis_label.config(text="Rain Possibility: " + weather_data["Rain Possibility"])
-    rüzgar_label.config(text="Wind Speed: " + weather_data["Wind Speed"])
+    space_label.config(text = "----------------------------------------------------------------------------------")
+    nem_label.config(text="Humidity: " + weather_data["Humidity"], image=scaled_humidity_img, compound=LEFT)
+    temps_morning_label.config(text="Temperature in the morning: " + weather_data["Temperature in the morning"], image=scaled_morning_img, compound=LEFT)
+    temps_night_label.config(text="Temperature at night: " + weather_data["Temperature at night"], image=scaled_night_img, compound=LEFT)
+    yagis_label.config(text="Rain Possibility: " + weather_data["Rain Possibility"], image=scaled_rain_img, compound=LEFT)
+    rüzgar_label.config(text="Wind Speed: " + weather_data["Wind Speed"], image=scaled_wind_img, compound=LEFT)
+    space2_label.config(text="---------------------------------------------")
     if temperature_unit == "Celsius":
         converted_temperature_morning = weather_data["Temperature in the morning"]
         converted_temperature_night = weather_data["Temperature at night"]
@@ -119,6 +121,8 @@ def toggle_unit():
         temperature_unit = "Celsius"
 
     unit_label.config(text="Temperature Unit: " + temperature_unit)
+    space3_label.config(text="---------------------------------------------")
+
 
 
 ###################       GUI
@@ -126,9 +130,26 @@ def toggle_unit():
 root = Tk()
 root.title("Weather Information Display Program")
 
-root.geometry("700x600")
+root.geometry("800x700")
 
 font_size = 14
+
+#### Images
+humidity_img = PhotoImage(file="C:\\Users\\alper\\Downloads\\nem.png")
+scaled_humidity_img = humidity_img.subsample(3, 3)
+
+morning_img = PhotoImage(file="C:\\Users\\alper\\Downloads\\morning.png")
+scaled_morning_img = morning_img.subsample(3, 3)
+
+night_img = PhotoImage(file="C:\\Users\\alper\\Downloads\\night.png")
+scaled_night_img = night_img.subsample(8, 8)
+
+rain_img = PhotoImage(file="C:\\Users\\alper\\Downloads\\yagis.png")
+scaled_rain_img = rain_img.subsample(3, 3)
+
+wind_img = PhotoImage(file="C:\\Users\\alper\\Downloads\\ruzgar.png")
+scaled_wind_img = wind_img.subsample(3, 3)
+
 
 title = tk.Label(root, text='Welcome!', font=("Arial", font_size))
 title.pack()
@@ -148,24 +169,40 @@ drop.pack()
 
 myButton = Button(root, text="Today", command=today, font=("Arial", font_size))
 myButton.pack()
+
 myButton2 = Button(root, text="Tomorrow", command=secondDay, font=("Arial", font_size))
 myButton2.pack()
+
 myButton3 = Button(root, text="2 Days Later", command=thirdDay, font=("Arial", font_size))
 myButton3.pack()
 
-nem_label = Label(root, font=("Arial", font_size))
+space_label = Label(root, font=("Arial", font_size))
+space_label.pack()
+
+nem_label = Label(root, font=("Arial", font_size), image=scaled_humidity_img, compound=LEFT)
 nem_label.pack()
-temps_morning_label = Label(root, font=("Arial", font_size))
+
+temps_morning_label = Label(root, font=("Arial", font_size), image=scaled_morning_img, compound=LEFT)
 temps_morning_label.pack()
-temps_night_label = Label(root, font=("Arial", font_size))
+
+temps_night_label = Label(root, font=("Arial", font_size), image=scaled_night_img, compound=LEFT)
 temps_night_label.pack()
-yagis_label = Label(root, font=("Arial", font_size))
+
+yagis_label = Label(root, font=("Arial", font_size), image=scaled_rain_img, compound=LEFT)
 yagis_label.pack()
-rüzgar_label = Label(root, font=("Arial", font_size))
+
+rüzgar_label = Label(root, font=("Arial", font_size), image=scaled_wind_img, compound=LEFT)
 rüzgar_label.pack()
+
+space2_label = Label(root, font=("Arial", font_size))
+space2_label.pack()
+
 
 unit_label = Label(root, font=("Arial", font_size))
 unit_label.pack()
+
+space3_label = Label(root, font=("Arial", font_size))
+space3_label.pack()
 
 
 toggle_button = Button(root, text="Toggle Temperature Unit", command=toggle_unit, font=("Arial", font_size))
