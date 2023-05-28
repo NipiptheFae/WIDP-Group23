@@ -4,6 +4,8 @@ from bs4 import BeautifulSoup
 from tkinter import *
 import requests
 import re
+from PIL import ImageTk, Image
+
 
 temperature_unit = "Celsius"
 
@@ -129,7 +131,8 @@ def toggle_unit():
 
 root = Tk()
 root.title("Weather Information Display Program")
-
+havaDurumu = ImageTk.PhotoImage(Image.open("havadurumu.png"))
+root.iconphoto(False, havaDurumu)
 root.geometry("800x700")
 
 font_size = 14
