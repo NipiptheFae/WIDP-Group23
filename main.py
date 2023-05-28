@@ -25,6 +25,12 @@ def today():
     yagis1 = str(page_text1).split("İhtimali: ")[1].split("</div>")[0]
     rüzgar1 = str(page_text1).split("Rüzgar Hızı:")[1].split(" </div>")[0]
 
+    if temperature_unit == "Celsius":
+        with open("Settings.txt", "w") as f:
+            f.write("Celsius\n " + clicked_city)
+    elif temperature_unit == "Fahrenheit":
+        with open("Settings.txt", "w") as f:
+            f.write("Fahrenheit\n" + clicked_city)
 
     weather_data = {
         "Humidity": nem1,
@@ -52,6 +58,13 @@ def secondDay():
     yagis = str(page_text).split("Yağış İhtimali:</strong>")[1].split(" </div>")[0]
     rüzgar = str(page_text).split("Rüzgar Hızı:</strong>")[1].split(" </div>")[0]
 
+    if temperature_unit == "Celsius":
+        with open("Settings.txt", "w") as f:
+            f.write("Celsius\n " + clicked_city)
+    elif temperature_unit == "Fahrenheit":
+        with open("Settings.txt", "w") as f:
+            f.write("Fahrenheit\n" + clicked_city)
+
     weather_data = {
         "Humidity": nem,
         "Temperature in the morning": temp1,
@@ -78,6 +91,13 @@ def thirdDay():
     temp2 = temps.split("/")[1].split("°")[0]
     yagis = str(day2).split("Yağış İhtimali:</strong>")[1].split(" </div>")[0]
     rüzgar = str(day2).split("Rüzgar Hızı:</strong>")[1].split(" </div>")[0]
+
+    if temperature_unit == "Celsius":
+        with open("Settings.txt", "w") as f:
+            f.write("Celsius\n " + clicked_city)
+    elif temperature_unit == "Fahrenheit":
+        with open("Settings.txt", "w") as f:
+            f.write("Fahrenheit\n" + clicked_city)
 
     weather_data = {
         "Humidity": nem,
@@ -210,5 +230,11 @@ space3_label.pack()
 
 toggle_button = Button(root, text="Toggle Temperature Unit", command=toggle_unit, font=("Arial", font_size))
 toggle_button.pack()
+
+file_reader = open("Settings.txt")
+temp_temp = file_reader.readline()
+temp_clicked = file_reader.readline()
+temperature_unit = f"{temp_temp}"
+clicked.set(temp_clicked)
 
 root.mainloop()
