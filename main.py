@@ -1,5 +1,5 @@
 import tkinter as tk
-from tkinter import ttk
+import ttkbootstrap
 from bs4 import BeautifulSoup
 from tkinter import *
 import requests
@@ -155,7 +155,15 @@ havaDurumu = ImageTk.PhotoImage(Image.open("havadurumu.png"))
 root.iconphoto(False, havaDurumu)
 root.geometry("800x700")
 
+
+
 font_size = 14
+
+png_label = ttkbootstrap.Label(root, image= havaDurumu)
+png_label.pack(side=LEFT)
+
+png_label2 = ttkbootstrap.Label(root, image= havaDurumu)
+png_label2.pack(side=RIGHT)
 
 #### Images
 humidity_img = PhotoImage(file="C:\\Users\\alper\\Downloads\\nem.png")
@@ -174,10 +182,10 @@ wind_img = PhotoImage(file="C:\\Users\\alper\\Downloads\\ruzgar.png")
 scaled_wind_img = wind_img.subsample(3, 3)
 
 
-title = tk.Label(root, text='Welcome!', font=("Arial", font_size))
+title = ttkbootstrap.Label(root, text='Welcome!', font=("Arial", font_size), background="pink")
 title.pack()
 
-title2 = tk.Label(root, text='Please choose your city.', font=("Arial", font_size))
+title2 = ttkbootstrap.Label(root, text='Please choose your city.', font=("Arial", font_size), background="pink")
 title2.pack()
 
 clicked = StringVar()
