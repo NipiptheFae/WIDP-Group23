@@ -7,6 +7,7 @@ import requests
 import re
 from PIL import ImageTk, Image
 import tkinter.messagebox as messagebox
+
 temperature_unit = "Celsius"
 
 def save_settings():
