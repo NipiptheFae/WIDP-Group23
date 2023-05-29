@@ -26,8 +26,9 @@ def load_settings():
         pass
 
 def on_program_exit():
+    if messagebox.askokcancel("Quit", "Do you want to quit?"):
+        root.destroy()
     save_settings()
-    root.destroy()
 
 def today():
     try:
@@ -285,6 +286,9 @@ space3_label.pack()
 toggle_button = Button(root, text="Toggle Temperature Unit", command=toggle_unit, font=("Arial", font_size))
 toggle_button.pack()
 
+exitButton = Button(root, text="Exit Program", command= on_program_exit,font=("Arial", font_size))
+exitButton.pack()
+
 file_reader = open("Settings.txt")
 temp_temp = file_reader.readline()
 temp_clicked = file_reader.readline()
@@ -293,6 +297,5 @@ clicked.set(temp_clicked)
 
 load_settings()
 
-root.protocol("WM_DELETE_WINDOW", on_program_exit)
 
 root.mainloop()
