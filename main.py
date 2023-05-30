@@ -6,6 +6,7 @@ import requests
 from PIL import ImageTk, Image
 import tkinter.messagebox as messagebox
 
+temperature_unit = "Celsius"
 
 def save_settings():
     with open("Settings.txt", "w") as f:
@@ -27,6 +28,7 @@ def on_program_exit():
     if messagebox.askokcancel("Quit", "Do you want to quit?"):
         root.destroy()
     save_settings()
+
 def today():
     try:
         clicked_city = clicked.get()
