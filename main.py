@@ -286,16 +286,9 @@ toggle_button.pack()
 
 exitButton = Button(root, text="Exit Program", command= on_program_exit,font=("Arial", font_size))
 exitButton.pack()
-try:
-    file_reader = open("Settings.txt")
-    temp_temp = file_reader.readline()
-    temp_clicked = file_reader.readline()
-    temperature_unit = f"{temp_temp}"
-    clicked.set(temp_clicked)
-except FileNotFoundError:
-    pass
-load_settings()
 
+
+load_settings()
 root.protocol("WM_DELETE_WINDOW", on_program_exit)
 
 root.mainloop()
