@@ -6,7 +6,6 @@ import requests
 from PIL import ImageTk, Image
 import tkinter.messagebox as messagebox
 
-temperature_unit = "Celsius"
 
 def save_settings():
     with open("Settings.txt", "w") as f:
@@ -23,9 +22,6 @@ def load_settings():
     except FileNotFoundError:
         pass
 
-def on_program_exit():
-    save_settings()
-    root.destroy()
 
 def on_program_exit():
     if messagebox.askokcancel("Quit", "Do you want to quit?"):
