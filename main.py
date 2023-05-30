@@ -1,10 +1,8 @@
-import tkinter as tk
-from tkinter import ttk
+
 import ttkbootstrap as ttkbootstrap
 from bs4 import BeautifulSoup
 from tkinter import *
 import requests
-import re
 from PIL import ImageTk, Image
 import tkinter.messagebox as messagebox
 
@@ -26,10 +24,13 @@ def load_settings():
         pass
 
 def on_program_exit():
+    save_settings()
+    root.destroy()
+
+def on_program_exit():
     if messagebox.askokcancel("Quit", "Do you want to quit?"):
         root.destroy()
     save_settings()
-
 def today():
     try:
         clicked_city = clicked.get()
@@ -297,5 +298,6 @@ clicked.set(temp_clicked)
 
 load_settings()
 
+root.protocol("WM_DELETE_WINDOW", on_program_exit)
 
 root.mainloop()
