@@ -6,6 +6,15 @@ import requests
 from PIL import ImageTk, Image
 import tkinter.messagebox as messagebox
 
+# -------------------Weather Information Display Program---------------------
+
+# Alper Caymaz 20200601015
+# Sabahaddin İspiroglu 20200601029
+# Direnç Can Karahan 20190601027
+
+# ----------------------------------------------------------------------------
+
+
 temperature_unit = "Celsius"
 
 def save_settings():
