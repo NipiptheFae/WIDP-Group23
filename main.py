@@ -280,7 +280,7 @@ space2_label = Label(root, font=("Arial", font_size))
 space2_label.config(text = "----------------------------------------------------------------------------------")
 space2_label.pack()
 
-
+load_settings()
 unit_label = Label(root, font=("Arial", font_size))
 unit_label.pack()
 unit_label.config(text="Temperature Unit: " + temperature_unit)
